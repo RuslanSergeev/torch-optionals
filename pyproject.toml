@@ -1,0 +1,49 @@
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "torch-optionals"
+version = "0.1.0"
+description = "Testing Poetry with extras installations"
+authors = [
+    {name = "Ruslan Sergeev",email = "mybox.sergeev@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pyyaml (>=6.0.2,<7.0.0)",
+]
+
+[project.optional-dependencies]
+cpu = [
+    "torch (==2.2.2+cpu)",
+]
+cuda = [
+    "torch (==2.2.2+cu121)",
+]
+
+
+[tool.poetry]
+packages = [
+    {include = "torch_optionals", from = "."}
+]
+
+[tool.poetry.dependencies]
+torch = [
+    { markers = "extra == 'cpu' and extra != 'cuda'", source = "pytorch-cpu"},
+    { markers = "extra == 'cuda' and extra != 'cpu'", source = "pytorch-cuda"},
+]
+
+
+[[tool.poetry.source]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+
+[[tool.poetry.source]]
+name = "pytorch-cuda"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"

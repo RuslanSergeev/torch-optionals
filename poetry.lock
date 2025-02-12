@@ -545,4 +545,4 @@ cuda = ["torch"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "c085c28e668019bcba826b95d0521540e72a7d1f55f13e8f67f4b8570fd8529e"
+content-hash = "cec7e5f560c7c37c94887acd262ac621f84b3574e671f5d5b8671d57e294fadc"

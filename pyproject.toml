@@ -27,13 +27,13 @@ cuda = [
 
 [tool.poetry]
 packages = [
-    {include = "torch_optionals", from = "."}
+    {include = "torch_optionals", from = "."},
 ]
 
 [tool.poetry.dependencies]
 torch = [
-    { markers = "extra == 'cpu' and extra != 'cuda'", source = "pytorch-cpu"},
-    { markers = "extra == 'cuda' and extra != 'cpu'", source = "pytorch-cuda"},
+    { markers = "(extra == 'cpu' and extra != 'cuda')", source = "pytorch-cpu"},
+    { markers = "(extra == 'cuda' and extra != 'cpu')", source = "pytorch-cuda"},
 ]
 
 
